@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 
-class PageHeader extends StatelessWidget {
+class SearchHeader extends StatelessWidget {
   final String _title;
-  const PageHeader({Key? key, String title = ""}) : _title = title, super(key: key);
+  const SearchHeader({Key? key, String title = ""}) : _title = title, super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,8 @@ class PageHeader extends StatelessWidget {
         // * Back button
         IconButton(
           color: Colors.white,
-          icon: const Icon(
-            Icons.chevron_left_rounded
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          icon: const Icon(Icons.chevron_left_rounded),
+          onPressed: () => Navigator.pop(context)
         ),
 
         // * Optional title label
@@ -29,11 +25,11 @@ class PageHeader extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontWeight: FontWeight.bold
               ),
             ),
           ),
         ),
+
       ],
     );
   }
