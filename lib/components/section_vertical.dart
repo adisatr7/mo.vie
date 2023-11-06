@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 
-class HorizontalSection extends StatefulWidget {
+class VerticalSection extends StatefulWidget {
   // final List<Map<String, dynamic>> items;
   final Future<Map<String, dynamic>> Function() fetchFunction;
   final String title;
 
-  const HorizontalSection({
+  const VerticalSection({
     super.key,
     required this.title,
     required this.fetchFunction
   });
 
   @override
-  State<HorizontalSection> createState() => _HorizontalSectionState();
+  State<VerticalSection> createState() => _VerticalSectionState();
 }
 
-class _HorizontalSectionState extends State<HorizontalSection> {
+class _VerticalSectionState extends State<VerticalSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,46 +50,53 @@ class _HorizontalSectionState extends State<HorizontalSection> {
               else if (snapshot.hasData) {
                 final results = snapshot.data!["results"];
 
-                return SizedBox(
-                  height: 160,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: results.length,
-                    itemBuilder: (context, index) {
-                      final DateTime releaseDate = DateTime.parse(results[index]["release_date"]);
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: results.length,
+                  itemBuilder: (context, index) {
+                    final DateTime releaseDate = DateTime.parse(results[index]["release_date"]);
 
-                      return Container(
-                        width: 145,
-                        margin: const EdgeInsets.only(right: 10),
-                        child: Column(
-                          key: Key(index.toString()),
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.network(
-                                "https://image.tmdb.org/t/p/w400${results[index]["poster_path"]}",
-                                height: 105,
-                                width: 140,
-                                fit: BoxFit.cover,
-                              ),
+                    // * The item card
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 14),
+                      child: Row(
+                        key: Key(index.toString()),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          // * Movie Poster
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              "https://image.tmdb.org/t/p/w400${results[index]["poster_path"]}",
+                              height: 105,
+                              width: 140,
+                              fit: BoxFit.cover
                             ),
-                            Column(
+                          ),
+
+                          // * Movie Title and Release Date container
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 14),
+                            height: 105,
+                            width: 236,
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  margin: const EdgeInsets.only(top: 6),
-                                  child: Text(
-                                    results[index]["title"],
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+
+                                // * Movie Title
+                                Text(
+                                  results[index]["title"],
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
+
+                                // * Movie Release Date
                                 Text(
                                   DateFormat("MMM d, yyyy").format(releaseDate),
                                   style: TextStyle(
@@ -98,13 +105,16 @@ class _HorizontalSectionState extends State<HorizontalSection> {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
+
                               ],
                             ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                          ),
+
+                        ],
+                      ),
+                    );
+
+                  },
                 );
               }
 
