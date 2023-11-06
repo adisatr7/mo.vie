@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/search_screen.dart';
+import '../../screens/search_screen.dart';
 
 
 class HomeHeader extends StatelessWidget {

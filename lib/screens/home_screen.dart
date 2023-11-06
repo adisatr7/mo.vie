@@ -3,9 +3,9 @@ import 'package:movie_app/api/fetch_discover.dart';
 import 'package:movie_app/api/fetch_in_theatres.dart';
 import 'package:movie_app/api/fetch_top_rated.dart';
 import 'package:movie_app/api/fetch_upcoming.dart';
-import 'package:movie_app/components/header_home.dart';
-import 'package:movie_app/components/section_horizontal.dart';
-import 'package:movie_app/components/section_vertical.dart';
+import 'package:movie_app/components/headers/header_home.dart';
+import 'package:movie_app/components/sections/section_horizontal.dart';
+import 'package:movie_app/components/sections/section_vertical.dart';
 
 
 class HomeScreen extends StatefulWidget {
