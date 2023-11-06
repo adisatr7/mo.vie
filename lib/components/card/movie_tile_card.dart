@@ -32,6 +32,7 @@ class MovieTileCard extends StatelessWidget {
             key: Key(item["id"].toString()),
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
               // * Thumbnail image
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
@@ -50,6 +51,7 @@ class MovieTileCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   // * Movie Title
                   Container(
                     margin: const EdgeInsets.only(top: 6),
@@ -72,8 +74,10 @@ class MovieTileCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
+
                 ],
               ),
+
             ],
           ),
         ),
