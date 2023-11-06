@@ -24,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: 12),
                 child: ListView(
                   shrinkWrap: true,
-                  children: [
+                  children: const [
                     ListTile(
                       title: Text("Search Result"),
                     )

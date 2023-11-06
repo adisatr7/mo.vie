@@ -33,28 +33,29 @@ class _HomeScreenState extends State<HomeScreen> {
               // * Scrollable Content
               Expanded(
                 child: ListView(
-                  children: [
+                  physics: const BouncingScrollPhysics(),
+                  children: const [
 
                     // * `In Theatre` Section
-                    const HorizontalSection(
+                    HorizontalSection(
                       title: "In Theatres",
                       fetchFunction: fetchMoviesInTheatres
                     ),
 
                     // * `Upcoming` Section
-                    const HorizontalSection(
+                    HorizontalSection(
                       title: "Upcoming",
                       fetchFunction: fetchUpcomingMovies
                     ),
 
                     // * `Top Rated` Section
-                    const HorizontalSection(
+                    HorizontalSection(
                       title: "Top Rated",
                       fetchFunction: fetchTopRatedMovies
                     ),
 
                     // * `Discover` Section
-                    const VerticalSection(
+                    VerticalSection(
                       title: "Discover",
                       fetchFunction: fetchPopularMovies
                     )
