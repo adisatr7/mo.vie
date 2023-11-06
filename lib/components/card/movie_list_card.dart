@@ -12,7 +12,7 @@ class MovieListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime releaseDate = DateTime.parse(item["release_date"]);
+    final dynamic releaseDate = item["release_date"] != "" ? DateTime.parse(item["release_date"]) : "";
 
     return Container(
       margin: const EdgeInsets.only(bottom: 14),
@@ -25,7 +25,9 @@ class MovieListCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
-              "https://image.tmdb.org/t/p/w400${item["poster_path"]}",
+              item["poster_path"] != null
+                ? "https://image.tmdb.org/t/p/w400${item["poster_path"]}"
+                : "https://www.solidbackgrounds.com/images/2560x1440/2560x1440-gray-solid-color-background.jpg",
               height: 64,
               width: 114,
               fit: BoxFit.cover
@@ -36,7 +38,7 @@ class MovieListCard extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 14),
             height: 64,
-            width: 200,
+            width: 220,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +56,7 @@ class MovieListCard extends StatelessWidget {
 
                 // * Movie Release Date
                 Text(
-                  DateFormat("MMM d, yyyy").format(releaseDate),
+                  releaseDate != "" ? DateFormat("MMM d, yyyy").format(releaseDate) : "Unavailable",
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.5),
                     fontSize: 14,
