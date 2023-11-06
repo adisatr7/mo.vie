@@ -4,9 +4,6 @@ import 'package:http/http.dart' as http;
 
 /// Function to fetch data from API
 Future<Map<String, dynamic>> fetchMoviesInTheatres() async {
-  // ! Don't invoke 'print' in production code. Try using a logging framework.
-  print("Fetching movies in theatres...");
-
   final response = await http.get(
       Uri.parse(
         "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
@@ -19,9 +16,6 @@ Future<Map<String, dynamic>> fetchMoviesInTheatres() async {
 
   // If the server did return a 200 OK response, parse the JSON and return it.
   if (response.statusCode == 200) {
-    // ! Don't invoke 'print' in production code. Try using a logging framework.
-    print("Fetched movies in theatres!");
-
     return jsonDecode(response.body);
   }
 

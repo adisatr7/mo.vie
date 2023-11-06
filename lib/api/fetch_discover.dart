@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 
 
 /// Function to fetch data from API
-Future<Map<String, dynamic>> fetchTopRatedMovies() async {
+Future<Map<String, dynamic>> fetchPopularMovies() async {
   final response = await http.get(
       Uri.parse(
-        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1"
+        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
       ),
       headers: {
         "accept": "application/json",
