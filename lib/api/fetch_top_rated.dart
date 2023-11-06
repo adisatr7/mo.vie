@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
-/// Function to fetch data from API
 Future<Map<String, dynamic>> fetchTopRatedMovies() async {
   final response = await http.get(
       Uri.parse(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+
 class MovieTileCard extends StatelessWidget {
   final Map<String, dynamic> item;
 
