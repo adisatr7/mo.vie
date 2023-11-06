@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:movie_app/components/card/movie_tile_card.dart';
-import 'package:movie_app/models/movie.dart';
 
 
 class HorizontalSection extends StatefulWidget {
