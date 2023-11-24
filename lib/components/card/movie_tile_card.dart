@@ -32,7 +32,7 @@ class MovieTileCard extends StatelessWidget {
             key: Key(item["id"].toString()),
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
+
               // * Thumbnail image
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
