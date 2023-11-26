@@ -26,7 +26,7 @@ class DetailScreen extends StatelessWidget {
 
               // * Background image
               ImageFiltered(
-                imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
                 child: Image.network(
                   posterPath,
                   fit: BoxFit.cover,
